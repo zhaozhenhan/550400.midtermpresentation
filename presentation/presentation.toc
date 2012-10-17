@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.19pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Objectives and Deliverables}{6}{0}{2}
+\beamer@sectionintoc {3}{Approaches \& Research Accomplished}{8}{0}{3}
+\beamer@sectionintoc {4}{Conclusions \& Future Recommendations}{15}{0}{4}

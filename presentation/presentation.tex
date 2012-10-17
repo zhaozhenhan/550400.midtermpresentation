@@ -1,0 +1,286 @@
+\documentclass[compress,handout,10pt]{beamer}
+
+\newlength{\wideitemsep}
+\setlength{\wideitemsep}{\itemsep}
+\addtolength{\wideitemsep}{100pt}
+\let\olditem\item
+\renewcommand{\item}{\setlength{\itemsep}{0.5\baselineskip}\olditem}
+
+\usetheme{Singapore}
+\usecolortheme{lily}
+\usefonttheme[onlymath]{serif}
+
+\usepackage{float}
+\floatstyle{boxed}
+\usepackage{colortbl}
+\usepackage{mathpazo}
+\usepackage{graphicx}
+\usepackage{movie15}
+\usepackage{bm}
+\usepackage{verbatim}
+\usepackage{comment}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphics}
+\captionsetup[subfigure]{labelformat=empty}
+\captionsetup[figure]{labelformat=empty}
+
+\newcommand{\mygreen}{\color{green!50!black}}
+\newcommand{\myblue}{\color{blue}}
+\newcommand{\myred}{\color{red}}
+\newcommand{\mycolor}{\color{red}{c}\color{blue}{o}\color{green}{l}\color{orange}{o}\color{cyan}{r}}
+\newcommand{\mysize}{\scriptsize{s}\small{i}\normalsize{z}\Large{e}}
+\newcommand{\myshape}{\textcircled{s}\textit{h}\texttt{a}\textsf{p}\textsc{e}}
+
+\xdefinecolor{titlecolor}{rgb}{.855,.647,.125}
+\setbeamercolor{frametitle}{fg=titlecolor}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamercolor{normal text in math text}{parent=math text}
+
+\setbeamertemplate{navigation symbols}{} %gets rid of navigation symbols
+\setbeamertemplate{footline}[frame number]
+\beamertemplateshadingbackground{blue!5}{yellow!10}
+
+\title{{\color{blue} \LARGE Constructing Dedicated Portfolio against District Bond Obligations from a Simplified Scenario\newline} }
+
+\subtitle{{\color{red} \large Stone \& Youngberg  } }
+
+\author{ 
+%    \vspace{5pt}
+    {\bf{Participant:}} \\ 
+Zhenhan Zhao\\ 
+    \vspace{5pt}
+} 
+\institute{JHU AMS 2012 FALL}
+
+\date{\mygreen Last Complied on \today} 
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Outline}
+   \begin{itemize}
+    \item Introduction 
+    \item Objectives \& Deliverables
+    \item Approaches \& Research Accomplished
+    \item Conclusion \& Future Recommendations
+   \end{itemize}
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+    \frametitle{My sponsor}
+Stone \& Youngberg is a division of Stifel Nicolaus \& Company and is a leader in municipal finance in the Far West, with roots in California dating back to 1931. Its parent company, Stifel Nicolaus \& Company, has been providing investment services nationally since 1890 and, today, remains one of the few independent, full-service, securities-related financial services firms in the country.
+\vspace{3mm}
+
+Stone \& Youngberg works with state and local governments, school districts and non-profit agencies to strengthen local communities.  
+\end{frame}
+
+\begin{frame}
+    \frametitle{Background}
+Poway Unified School District is a school district located in Poway, California.\\
+\vspace{3mm}
+Last year, it borrowed 105 million dollars from investors by selling a bond to either payoff previous debts and upgrade infrastructures.\\
+Taxpayers in the area will end up with a nearly 1 billion bill at the end of this deal. \\
+\vspace{3mm}
+In the next two decades, taxpayers in the Poway district will have to start paying about 50 million a year to cover the total bill
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Problems}
+the district could have authorized more taxes from taxpayers to pay for the interests from the bond, but it would break down the promises they made to the community and the connection with it \\
+\vspace{3mm}
+Poway school district decided to employ other means and has sought help from Stone \& Youngberg \\
+\vspace{3mm}
+Stone \& Youngberg has come up with a strategy to construct a dedicated portfolio that can generate future cash flow to satisfy Poway's future financial obligations\\
+
+
+\end{frame}
+
+\section{Objectives and Deliverables}
+
+\begin{frame}
+    \frametitle{Objectives}
+In this project, we will try to select the appropriate assets at a minimum cost but with maximum degree of matching , then find the optimal proportion of each asset 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Deliverables}
+The R packages of present value calculations of liability stream\\
+\vspace{3mm}
+The list of assets in portfolio\\
+\vspace{3mm}
+The Excel spreadsheet of asset proportion calculations\\
+\vspace{3mm}
+The performance of our portfolio
+\end{frame}
+
+\section{Approaches \& Research Accomplished}
+
+\begin{frame}
+    \frametitle{Dummy Data}
+\begin{table}[h]
+\centering  
+\begin{tabular}{cccc}
+\hline
+Date  &Liability  &Date  &Liability\\ \hline  
+7/15/2012  &6  &7/15/2016  &8\\
+1/15/2013  &6  &1/15/2017  &8\\ 
+7/15/2013  &9  &7/15/2017  &8\\ 
+1/15/2014  &9  &1/15/2018  &8\\ 
+7/15/2014  &10 &7/15/2018  &6\\ 
+1/15/2015  &10  &1/15/2019  &6\\ 
+7/15/2015  &10  &7/15/2019  &5 \\ 
+1/15/2016  &10  &1/15/2020  &5\\ \hline
+\end{tabular}
+\caption{Liability Stream.}
+\end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Calculating present value of the liability stream}
+\begin{itemize}
+\item Polynomial \\
+Polynomial regression is a form of linear regression in which the relationship between the independent variable x and the dependent variable y is modeled as an nth order polynomial. \\
+\vspace{1mm}
+We used seven yield rates between 6 months and 10 years, 3rd order polynomial curve 
+\begin{figure}[bottom]
+    \begin{center}
+        \includegraphics[width=6cm,height=4.5cm]{fit.jpg}
+    \end{center}
+    \caption{fit}
+    \label{figure1}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Calculating present value of the liability stream}
+\begin{itemize}
+\item Bootstrapping \\
+First we compute the discount factor. The basic idea of bootstrapping is like this,\\
+\begin{eqnarray}
+  \ P &=& C(t_1) \times d(t_1) + C(t_2) \times d(t_2)
+\end{eqnarray}
+
+Once we have d(t1), from the equation, we will get d(t1) and d(t2), etc. After we compute the discount factors, we compute the present value of each liability .
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Calculating present value of the liability stream}
+\begin{table}[h]
+\centering  
+\begin{tabular}{ccccc}
+\hline
+Date  &Liability  &PV from Polynomial  &PV from Bootstrap\\ \hline  
+7/15/2012  &6    &6.00                        &6.00                      \\
+1/15/2013  &6    &5.99                      &5.99                  \\
+7/15/2013  &9  &8.98                        &8.98                     \\
+1/15/2014  &9  &8.96                       &8.96                     \\
+7/15/2014  &10 &9.93                        &9.93                      \\
+1/15/2015  &10 &9.89                        &9.90                     \\
+7/15/2015  &10  &9.84                        &9.86                    \\
+1/15/2016  &10  &9.77                        &9.79                      \\
+7/15/2016  &8        &7.76                        &7.76                     \\                             
+1/15/2017  &8      &7.68                        &7.68                     \\
+7/15/2017  &8       &7.60                       &7.59                      \\
+1/15/2018  &8       &7.51                       &7.49                     \\
+7/15/2018  &6    &5.56                        &5.55                     \\ 
+1/15/2019  &6      &5.48                       &5.47                     \\ 
+7/15/2019  &5      &4.50                        &4.49                      \\ 
+1/15/2020  &5       &4.43                       &4.43                      \\ \hline
+sum       &124           &119.9                    &119.86
+
+\end{tabular}
+\caption{Liability Stream.}
+\end{table}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Asset Allocation}
+we will choose around 30 assets to construct a portfolio to fulfill our future liability obligations. The assets are a pool of Treasury notes with different maturities. \\
+\vspace{3mm}
+Reasons:\\
+\vspace{3mm}
+\begin{itemize}
+\item Credit Risk \\
+Governmental bonds ensures that all obligations will be fulfilled without concerned of default risks. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Asset Allocation}
+\begin{itemize}
+\item Interest Risk \\
+We choose bonds with fixed payments to eliminate TIPS
+\vspace{8mm}
+\item Payment Matching\\
+Our assets should pay semi-annually. To solve the problem that there is no matching bond on the exact days, we choose T-notes with maturity BEFORE the exact payment dates. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Asset Allocation}
+\begin{table}[h]
+\centering  
+\begin{tabular}[width=6cm,height=4.5cm]{ccc}
+\hline
+T-NOTE 30/06/12  &T-NOTE 30/11/14       &T-NOTE  31/05/17\\
+T-NOTE 15/07/12   &T-NOTE 31/12/14        &T-NOTE 30/06/17\\
+T-NOTE31/12/12   &T-NOTE  31/05/15   &T-NOTE 30/11/17\\
+T-NOTE 15/01/13    &T-NOTE 30/06/15  & T-NOTE 31/12/17\\
+T-NOTE 30/06/13  & T-NOTE 30/11/15   &T-BOND  31/05/18\\
+T-NOTE 15/07/13    &T-NOTE 31/12/15   &T-NOTE  31/05/18\\
+T-NOTE 15/12013   &T-NOTE 31/05/16   &T-BOND 15/11/18\\
+T-NOTE 31/12/13  & T-NOTE 30/06/16   &T-NOTE 15/11/18\\
+T-NOTE 31/05014   &T-NOTE 30/11/16   &U S TREAS SEC 15/05/19\\
+T-NOTE 30/06/14   &T-NOTE 31/1216  &T-NOTE 15/05/19\\
+                                                &&U S TREAS SEC 15/11/19\\\hline
+\end{tabular}
+\caption{Assets}
+\end{table}
+\end{frame}
+
+
+
+\section{Conclusions \& Future Recommendations}
+\begin{frame}
+    \frametitle{What we have done}
+\begin{enumerate}
+\item Calculated the present value of the liability stream using polynomial regression and bootstrapping methods\\
+\item Selected 32 T-notes as our portfolio assets\\
+\end{enumerate}
+\vspace{15mm}
+\huge\centerline\emph\ {We are almost halfway there......}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{What to do next}
+How to construct the portfolio? \\
+\vspace{3mm}
+We want to make sure: 
+\begin{enumerate}
+\item Our initial investment and the excess cash from each period will be minimized.
+\item Duration, convexity and present value of the bond portfolio are equal to those of the liability stream.
+\end{enumerate}
+\vspace{5mm}
+Recommendations: \\
+\vspace{1mm}
+Use Excel to set up a Linear Program\\
+\vspace{2mm}
+Use Immunization Theory to compare the duration and convexity
+\end{frame}
+
+\begin{frame}
+\Huge\centerline {Thanks for Watching!}
+\end{frame}
+
+\end{document}
